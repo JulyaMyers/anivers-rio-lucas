@@ -267,10 +267,10 @@ p {
 .heart-particle {
     position: fixed;
     bottom: -10%;
-    color: #ff4081;
+    color: #a340ff;
     user-select: none;
     pointer-events: none;
-    z-index: 10001;
+    z-index: 10001; /* Camada base das animações */
     animation: floatUp linear infinite;
 }
 
@@ -284,7 +284,7 @@ p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
     border-radius: 5px;
-    z-index: 5;
+    z-index: 10005;
     animation: balanco 3s ease-in-out infinite alternate;
 }
 
@@ -301,22 +301,30 @@ p {
         width: 80px; 
         font-size: 0.6em;
         padding: 6px;
-        z-index: 10005; 
+        z-index: 10005;
     }
 
-    .r1 { top: 2%; left: 2%; }
-    .r2 { top: 2%; right: 2%; }
-    .r3 { bottom: 2%; left: 2%; top: auto; }
-    .r4 { bottom: 2%; right: 2%; top: auto; }
+    /* R1 e R2: Colados no topo para não atrapalhar o timer */
+    .r1 { top: 1%; left: 2%; }
+    .r2 { top: 1%; right: 2%; }
 
+    /* R3 e R4: Colados no limite de baixo para fugir do botão de música */
+    /* Usamos 1% para ficarem bem no rodapé */
+    .r3 { bottom: 1%; left: 2%; top: auto; }
+    .r4 { bottom: 1%; right: 2%; top: auto; }
 
+    /* R5: Ajustado para ficar numa lateral limpa */
     .r5 { 
-        top: 22%;
+        top: 20%; 
         right: 2%; 
         left: auto;
         display: block !important;
         transform: rotate(-5deg);
     }
+
+    .r6, .r7, .r8 { 
+        display: none !important;
+}
 }
 
 footer {
@@ -370,4 +378,22 @@ footer {
         font-size: 0.6em;
     }
     .r5 { display: none; }
+}
+
+/* Posições para PC - Mais centralizadas */
+.r1 { top: 8%; left: 12%; }
+.r2 { top: 8%; right: 12%; background: #f8bbd0; }
+
+.r3 { bottom: 8%; left: 12%; background: #e1f5fe; }
+.r4 { bottom: 8%; right: 12%; background: #dcedc8; }
+
+.r5 { top: 45%; left: 10%; } /* Meio da lateral esquerda */
+.r6 { top: 45%; right: 10%; background: #dcedc8; } /* Meio da lateral direita */
+
+.r7 { top: 25%; left: 15%; background: #fff9c4; } /* Um pouco mais pra dentro */
+.r8 { top: 25%; right: 15%; background: #e1f5fe; }
+
+.countdown-content {
+    position: relative;
+    z-index: 10010;
 }
