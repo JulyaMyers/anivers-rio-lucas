@@ -1,12 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hidden');
-            setTimeout(() => preloader.style.display = 'none', 500);
-        }, 500);
-    }
-
     const botaoMusica = document.getElementById('playMusicBtnCountdown'); 
     const minhaMusica = document.getElementById('musicaAmor');
     const btnSim = document.getElementById('btn-sim');
@@ -15,17 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const obstacle = document.getElementById("obstacle");
     const scoreElement = document.getElementById("score");
     const highScoreElement = document.getElementById("high-score");
+    const overlay = document.getElementById("countdown-overlay");
 
-    // --- VARIÁVEIS DO JOGO ATUALIZADAS ---
     let jogoAtivo = true;
-    let velocidadeBase = 180; // Pixels por segundo (ajuste se achar rápido/lento)
+    let velocidadeBase = 180; 
     let multiplicadorVelocidade = 1; 
     let posicaoObstaculo = 300;
     let score = 0;
     let highScore = parseInt(localStorage.getItem("monkeyRecorde")) || 0;
-    let ultimaAtualizacao = performance.now(); // Marca o tempo exato de início
+    let ultimaAtualizacao = performance.now(); 
 
-    if(highScoreElement) highScoreElement.innerText = highScore;
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.style.display = 'none', 500);
+        }, 500);
+    }
+
+    if (highScoreElement) highScoreElement.innerText = highScore;
 
     if (botaoMusica && minhaMusica) {
         botaoMusica.addEventListener('click', () => {
@@ -84,8 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
         
         const timerElement = document.getElementById('timer');
-        if(timerElement) timerElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        if (timerElement) timerElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }
+
     setInterval(atualizarContagem, 1000);
     atualizarContagem();
 
@@ -96,33 +97,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- LOOP DO JOGO OTIMIZADO ---
     function loopDoJogo(tempoAtual) {
         if (!jogoAtivo) return;
 
-        // Calcula o tempo que passou desde o último frame (Delta Time)
         const deltaTime = (tempoAtual - ultimaAtualizacao) / 1000; 
         ultimaAtualizacao = tempoAtual;
-
-        // Limita o delta para evitar "saltos" se o navegador travar por um segundo
         const deltaLimitado = Math.min(deltaTime, 0.1);
 
-        // Move o obstáculo baseado em pixels por segundo
         posicaoObstaculo -= (velocidadeBase * multiplicadorVelocidade) * deltaLimitado;
         
         if (posicaoObstaculo < -30) {
             posicaoObstaculo = 300;
-            multiplicadorVelocidade += 0.05; // Aumenta a dificuldade devagar
+            multiplicadorVelocidade += 0.05; 
             score++;
-            if(scoreElement) scoreElement.innerText = score;
+            if (scoreElement) scoreElement.innerText = score;
         }
 
-        if(obstacle) obstacle.style.left = posicaoObstaculo + "px";
+        if (obstacle) obstacle.style.left = posicaoObstaculo + "px";
 
         const playerRect = player.getBoundingClientRect();
         const obstacleRect = obstacle.getBoundingClientRect();
 
-        // Colisão com margem de erro para ser mais justo
         if (
             obstacleRect.left < playerRect.right - 12 &&
             obstacleRect.right > playerRect.left + 12 &&
@@ -138,22 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
         jogoAtivo = false;
         document.getElementById("game-area").style.display = "none";
         const gameOverScreen = document.getElementById("game-over-screen");
-        if(gameOverScreen) gameOverScreen.style.display = "flex";
+        if (gameOverScreen) gameOverScreen.style.display = "flex";
 
         if (score > highScore) {
             highScore = score;
             localStorage.setItem("monkeyRecorde", highScore);
-            if(highScoreElement) highScoreElement.innerText = highScore;
+            if (highScoreElement) highScoreElement.innerText = highScore;
         }
     }
 
     window.reiniciarJogo = function() {
         jogoAtivo = true;
         score = 0; 
-        if(scoreElement) scoreElement.innerText = "0";
+        if (scoreElement) scoreElement.innerText = "0";
         multiplicadorVelocidade = 1; 
         posicaoObstaculo = 300;
-        ultimaAtualizacao = performance.now(); // Reseta o tempo para o novo loop
+        ultimaAtualizacao = performance.now(); 
         document.getElementById("game-over-screen").style.display = "none";
         document.getElementById("game-area").style.display = "block";
         requestAnimationFrame(loopDoJogo);
@@ -170,10 +165,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicia o primeiro frame do loop
     requestAnimationFrame(loopDoJogo);
 
-    document.addEventListener("keydown", (e) => { if (e.code === "Space") { e.preventDefault(); window.pular(); } });
-    const overlay = document.getElementById("countdown-overlay");
-    if(overlay) overlay.addEventListener("click", window.pular);
+    document.addEventListener("keydown", (e) => { 
+        if (e.code === "Space") { 
+            e.preventDefault(); 
+            window.pular(); 
+        } 
+    });
+
+    if (overlay) overlay.addEventListener("click", window.pular);
+    
+    criarCoracoes();
 });
+
+function criarCoracoes() {
+    const overlay = document.getElementById('countdown-overlay');
+    if (!overlay) return;
+    for (let i = 0; i < 30; i++) {
+        const coracao = document.createElement('span');
+        coracao.innerHTML = '♥';
+        coracao.className = 'heart-particle';
+        coracao.style.left = Math.random() * 100 + '%';
+        coracao.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        coracao.style.animationDelay = Math.random() * 10 + 's';
+        coracao.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        overlay.appendChild(coracao);
+    }
+}

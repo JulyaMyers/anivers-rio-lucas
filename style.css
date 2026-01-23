@@ -2,7 +2,8 @@
 
 body {
     font-family: 'Pacifico', cursive;
-    background-color: #fce4ec;
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    background-attachment: fixed;
     color: #4a148c;
     margin: 0;
     padding: 20px;
@@ -24,7 +25,6 @@ p {
     font-size: 1.2em;
 }
 
-/* --- Seção de Polaroids --- */
 .photo-list {
     max-width: 900px;
     margin: 0 auto;
@@ -88,7 +88,6 @@ p {
     color: #4a148c;
 }
 
-/* --- Elementos Interativos e Música --- */
 .music-container {
     margin-top: 20px;
     display: flex;
@@ -115,13 +114,6 @@ p {
     transform: scale(1.1);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* --- Preloader --- */
 #preloader {
     position: fixed;
     top: 0; left: 0;
@@ -154,12 +146,6 @@ p {
     margin-bottom: 10px;
 }
 
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-15px); }
-}
-
-/* --- Pegadinha --- */
 .game-container {
     margin-top: 20vh;
     margin-bottom: 60px;
@@ -196,7 +182,6 @@ p {
 #btn-sim { background-color: #4caf50; color: white; }
 #btn-nao { background-color: #f44336; color: white; position: relative; }
 
-/* --- Tela de Contagem e Minigame --- */
 #countdown-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -207,6 +192,7 @@ p {
     align-items: center;
     z-index: 10000;
     text-align: center;
+    overflow: hidden;
 }
 
 #timer {
@@ -215,6 +201,11 @@ p {
     color: #4a148c;
     margin: 20px 0;
     font-family: 'Segoe UI', Arial, sans-serif;
+    text-shadow: 0 0 10px rgba(74, 20, 140, 0.3);
+    background: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 15px;
 }
 
 #game-wrapper {
@@ -222,6 +213,11 @@ p {
     height: 180px;
     margin: 40px auto 20px auto !important;
     position: relative;
+    border: 8px solid #880e4f;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 #game-area {
@@ -241,6 +237,8 @@ p {
     bottom: 0;
     left: 20px;
     font-size: 25px;
+    will-change: left; 
+    transform: translateZ(0); 
 }
 
 #obstacle {
@@ -250,6 +248,8 @@ p {
     bottom: 0;
     left: 300px;
     font-size: 20px;
+    will-change: left; 
+    transform: translateZ(0); 
 }
 
 #game-over-screen {
@@ -264,8 +264,53 @@ p {
     justify-content: center;
 }
 
-.jump {
-    animation: jumpAnim 0.5s;
+.heart-particle {
+    position: fixed;
+    bottom: -10%;
+    color: #ff4081;
+    user-select: none;
+    pointer-events: none;
+    z-index: 10001;
+    animation: floatUp linear infinite;
+}
+
+.card-recadinho {
+    position: absolute;
+    background: #fff9c4;
+    color: #4a148c;
+    padding: 10px;
+    width: 120px;
+    font-size: 0.75em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    z-index: 5;
+    animation: balanco 3s ease-in-out infinite alternate;
+}
+
+.r1 { top: 10%; left: 5%; transform: rotate(-5deg); }
+.r2 { top: 15%; right: 5%; transform: rotate(4deg); background: #f8bbd0; }
+.r3 { bottom: 20%; left: 8%; transform: rotate(-8deg); }
+.r4 { bottom: 15%; right: 10%; transform: rotate(6deg); background: #e1f5fe; }
+.r5 { top: 40%; left: 2%; transform: rotate(-2deg); }
+.r6 { top: 60%; right: 5%; transform: rotate(-4deg); background: #dcedc8; }
+.r7 { bottom: 5%; left: 15%; transform: rotate(3deg); background: #fff9c4; }
+.r8 { top: 50%; left: 5%; transform: rotate(7deg); background: #f8bbd0; }
+
+footer {
+    margin-top: 20vh;
+    padding-bottom: 50px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
 }
 
 @keyframes jumpAnim {
@@ -275,7 +320,22 @@ p {
     100% { bottom: 0; }
 }
 
-/* --- Gerais e Footer --- */
+.jump {
+    animation: jumpAnim 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes balanco {
+    from { transform: rotate(-3deg) translateY(0); }
+    to { transform: rotate(3deg) translateY(-5px); }
+}
+
 @media (max-width: 768px) {
     .photo-item, .photo-item.reverse {
         flex-direction: column;
@@ -283,19 +343,9 @@ p {
     }
     .photo-text { text-align: center; }
     #timer { font-size: 2.5em; }
-}
-
-footer {
-    margin-top: 20vh;
-    padding-bottom: 50px;
-}
-
-#player,
-#obstacle {
-    will-change: left; 
-    transform: translateZ(0); 
-}
-
-.jump {
-    animation: jumpAnim 0.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    .card-recadinho {
+        width: 80px;
+        font-size: 0.6em;
+    }
+    .r5 { display: none; }
 }
