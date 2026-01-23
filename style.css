@@ -276,7 +276,7 @@ p {
 
 .card-recadinho {
     position: absolute;
-    background: #fff9c4;
+    background: #c4d2ff;
     color: #4a148c;
     padding: 10px;
     width: 120px;
@@ -288,11 +288,36 @@ p {
     animation: balanco 3s ease-in-out infinite alternate;
 }
 
-.r1 { top: 10%; left: 5%; transform: rotate(-5deg); background: #f8bbd0;}
-.r2 { top: 20%; right: 5%; transform: rotate(4deg); background: #f8bbd0; }
-.r3 { bottom: 20%; left: 8%; transform: rotate(-8deg); background: #b3e7ff;}
-.r4 { bottom: 15%; right: 20%; transform: rotate(6deg); background: #b3e7ff; }
-.r5 { top: 40%; left: 2%; transform: rotate(-2deg); background: #c8c4ff;}
+
+.r1 { top: 5%; left: 2%; }
+.r2 { top: 5%; right: 2%; background: #f8bbd0; }
+.r3 { bottom: 5%; left: 2%; background: #e1f5fe; }
+.r4 { bottom: 5%; right: 2%; background: #dcedc8; }
+.r5 { top: 45%; left: 2%; } 
+
+
+@media (max-width: 768px) {
+    .card-recadinho {
+        width: 80px; 
+        font-size: 0.6em;
+        padding: 6px;
+        z-index: 10005; 
+    }
+
+    .r1 { top: 2%; left: 2%; }
+    .r2 { top: 2%; right: 2%; }
+    .r3 { bottom: 2%; left: 2%; top: auto; }
+    .r4 { bottom: 2%; right: 2%; top: auto; }
+
+
+    .r5 { 
+        top: 22%;
+        right: 2%; 
+        left: auto;
+        display: block !important;
+        transform: rotate(-5deg);
+    }
+}
 
 footer {
     margin-top: 20vh;
