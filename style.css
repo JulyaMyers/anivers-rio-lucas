@@ -195,6 +195,11 @@ p {
     overflow: hidden;
 }
 
+.countdown-content {
+    position: relative;
+    z-index: 10010;
+}
+
 #timer {
     font-size: 4em;
     font-weight: bold;
@@ -270,7 +275,7 @@ p {
     color: #8940ff; 
     user-select: none;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
     animation: floatUp linear infinite;
 }
 
