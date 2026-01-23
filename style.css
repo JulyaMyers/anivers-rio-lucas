@@ -293,9 +293,6 @@ p {
 .r3 { bottom: 20%; left: 8%; transform: rotate(-8deg); background: #b3e7ff;}
 .r4 { bottom: 15%; right: 20%; transform: rotate(6deg); background: #b3e7ff; }
 .r5 { top: 40%; left: 2%; transform: rotate(-2deg); background: #c8c4ff;}
-.r6 { top: 60%; right: 5%; transform: rotate(-4deg); background: #e3c4ff; }
-.r7 { bottom: 5%; left: 15%; transform: rotate(3deg); background: #c8c4ff; }
-.r8 { top: 50%; left: 5%; transform: rotate(7deg); background: #f8bbd0; }
 
 footer {
     margin-top: 20vh;
