@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Aniversário hihihi</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="countdown-overlay">
+      <div class="countdown-content">
+        <h2>Faltam apenas...</h2>
+        <div id="timer">00:00:00:00</div>
+        <p>para a sua surpresa ♥</p>
+
+        <div
+          id="game-wrapper"
+          style="
+            width: 300px;
+            height: 180px;
+            margin: 20px auto;
+            position: relative;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              top: -25px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              font-family: Arial, sans-serif;
+              font-size: 0.8em;
+              font-weight: bold;
+              color: #880e4f;
+            "
+          >
+            <span>Pontos: <span id="score">0</span></span>
+            <span>Recorde: <span id="high-score">0</span></span>
+          </div>
+          <div id="game-area">
+            <div id="player">🐒</div>
+            <div id="obstacle">🌴</div>
+          </div>
+
+          <div
+            id="game-over-screen"
+            style="
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(252, 228, 236, 0.9);
+              z-index: 20;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              src="images/monkey.gif"
+              alt="Game Over"
+              style="width: 120px; border-radius: 10px; margin-top: 10px"
+            />
+            <p style="font-size: 0.9em; margin: 5px 0"></p>
+            <button
+              onclick="reiniciarJogo()"
+              class="game-button"
+              style="padding: 5px 15px; font-size: 0.8em"
+            >
+              Tentar de novo
+            </button>
+          </div>
+        </div>
+        <div class="music-container">
+          <button id="playMusicBtnCountdown" class="heart-button">
+            <span class="heart-icon">♥</span> Clica aqui safado
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="preloader">
+      <div class="loader-content">
+        <span class="loader-heart">♥</span>
+        <p>Carregando...</p>
+      </div>
+    </div>
+
+    <audio id="musicaAmor" src="musica.mp3" loop></audio>
+
+    <header>
+      <h1>Feliz aniversário meu amor!♥</h1>
+      <p>Uma piquitica e trabalhosa (muito) surpresa pra vc hihi</p>
+      <p>
+        Obrigada por ser esse homem incrível, companheiro, lindo e amoroso que
+        vc é comigo.
+      </p>
+      <p>
+        Eu te desejo de verdade que vc seja muito feliz (cmg) e que cada
+        aniversário daqui em diante seja ainda melhor e melhor do que o
+        anterior.
+      </p>
+      <p>
+        Obrigada por me dar a honra de compartilhar esses momentos com vc e
+        espero que ano que vem eu tenha dinheiro pra te dar um aniversário de
+        verdade com viagem e travessuras hiihihihi eu te amo muitão!
+      </p>
+    </header>
+
+    <main class="photo-list">
+      <div class="photo-item">
+        <img src="images/primeira.jpg" alt="Nosso primeiro encontro" />
+        <div class="photo-text">
+          <h3>Nosso primeiro encontro...</h3>
+          <p>
+            Eu não consigo nem descrever os sentimentos que me dominaram nesse
+            dia hihihi foi lindo, mágico e agonizante admito. Obrigada por não
+            desistir da gente quando a maioria nem teria tentado, eu te amo
+            mesmo e cada dia mais desde então ♥
+          </p>
+        </div>
+      </div>
+
+      <div class="photo-item reverse">
+        <img src="images/hurt.jpg" alt="i hurt myself" />
+        <div class="photo-text">
+          <h3>Nossa promessa cumprida hihihi</h3>
+          <p>
+            I hurt myself today... hihihi finalmente assistimos deadpool e
+            wolverine juntos, tivemos nosso mês de ricos e essa é uma das nossas
+            fotos e momentos favoritos pra mim. Obrigada por me fazer tão feliz
+            desde sempre ♥
+          </p>
+        </div>
+      </div>
+
+      <div class="photo-item">
+        <img src="images/morandojuntos.jpg" alt="nossa casinha" />
+        <div class="photo-text">
+          <h3>Morando juntoooos</h3>
+          <p>
+            Aqui eu senti que a minha vida tinha ficado completa, eu tinha vc
+            comigo e nossa, também é difícil descrever essa sensação. Passamos
+            por coisas ruins sim mas em sua maioria foram coisas MARAVILHOSAS.
+            Obrigada de novo por se esforçar pela gente e obrigada por me dar
+            pela primeira vez na vida a sensação de lar. Eu te amo ♥
+          </p>
+        </div>
+      </div>
+
+      <div class="photo-item reverse">
+        <img src="images/show.jpg" alt="showsoad" />
+        <div class="photo-text">
+          <h3>Nossa grande aventura por SP (pegamos cancer de pulmão aqui)</h3>
+          <p>
+            Isso aqui foi especial tá? Dois caipiras em SP ficando
+            impressionados em como a cidade é sépia e nublada KKKKKKKKK Viajamos
+            de ônibus abraçadinhos, tiramos várias fotos e passamos muita dor
+            PROS CARAS NÃO TOCAREM NOSSAS PREFERIDAS... Mas ainda assim foi
+            incrível como tudo é com vc e obrigada por ir realizar meu sonho
+            comigo. Obrigada por tudo. De verdade. ♥
+          </p>
+        </div>
+      </div>
+
+      <div class="photo-item">
+        <img src="images/anonovo.jpg" alt="anonovo" />
+        <div class="photo-text">
+          <h3>Nosso primeiro natal/ano novo juntos</h3>
+          <p>
+            Sei que não foi como a gente planejou e que vc sentiu falta de muita
+            coisa, e sei como estar longe da sua família magoa vc, mas de
+            verdade obrigada por estar comigo e fazer dessa a melhor virada de
+            ano da minha vida. Eu te amo de verdade e te amo muito por todos os
+            sacrifícios que vc faz pela gente diariamente. Sei que temos nossas
+            teimosias e batidas de cabeça mas saiba que esse é de verdade o
+            período mais feliz da minha vida porque eu estou com vc. E de novo e
+            pela última vez por aqui, eu te amo mesmo Lucas. Sempre e pra
+            sempre. ♥
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <section class="game-container">
+      <h2>Essa é manjada mas ainda é legal vai</h2>
+      <p>Promete me aguentar pra sempre? ♥</p>
+      <div class="buttons-wrap">
+        <button id="btn-sim" class="game-button">SIM! EU PROMETO</button>
+        <button id="btn-nao" class="game-button">Não</button>
+      </div>
+    </section>
+
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
