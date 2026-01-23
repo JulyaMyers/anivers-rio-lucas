@@ -267,10 +267,10 @@ p {
 .heart-particle {
     position: fixed;
     bottom: -10%;
-    color: #a340ff;
+    color: #ff4081;
     user-select: none;
     pointer-events: none;
-    z-index: 10001; /* Camada base das animações */
+    z-index: 10001; /* Mantém no 10001 */
     animation: floatUp linear infinite;
 }
 
@@ -298,10 +298,11 @@ p {
 
 @media (max-width: 768px) {
     .card-recadinho {
+        position: absolute;
         width: 80px; 
         font-size: 0.6em;
         padding: 6px;
-        z-index: 10005;
+        z-index: 10015;
     }
 
     /* R1 e R2: Colados no topo para não atrapalhar o timer */
@@ -393,7 +394,7 @@ footer {
 .r7 { top: 25%; left: 15%; background: #fff9c4; } /* Um pouco mais pra dentro */
 .r8 { top: 25%; right: 15%; background: #e1f5fe; }
 
-.countdown-content {
+countdown-content {
     position: relative;
-    z-index: 10010;
+    z-index: 10020;
 }
