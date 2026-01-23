@@ -288,13 +288,13 @@ p {
     animation: balanco 3s ease-in-out infinite alternate;
 }
 
-.r1 { top: 10%; left: 5%; transform: rotate(-5deg); }
-.r2 { top: 15%; right: 5%; transform: rotate(4deg); background: #f8bbd0; }
-.r3 { bottom: 20%; left: 8%; transform: rotate(-8deg); }
-.r4 { bottom: 15%; right: 10%; transform: rotate(6deg); background: #e1f5fe; }
-.r5 { top: 40%; left: 2%; transform: rotate(-2deg); }
-.r6 { top: 60%; right: 5%; transform: rotate(-4deg); background: #dcedc8; }
-.r7 { bottom: 5%; left: 15%; transform: rotate(3deg); background: #fff9c4; }
+.r1 { top: 10%; left: 5%; transform: rotate(-5deg); background: #f8bbd0;}
+.r2 { top: 20%; right: 5%; transform: rotate(4deg); background: #f8bbd0; }
+.r3 { bottom: 20%; left: 8%; transform: rotate(-8deg); background: #b3e7ff;}
+.r4 { bottom: 15%; right: 20%; transform: rotate(6deg); background: #b3e7ff; }
+.r5 { top: 40%; left: 2%; transform: rotate(-2deg); background: #c8c4ff;}
+.r6 { top: 60%; right: 5%; transform: rotate(-4deg); background: #e3c4ff; }
+.r7 { bottom: 5%; left: 15%; transform: rotate(3deg); background: #c8c4ff; }
 .r8 { top: 50%; left: 5%; transform: rotate(7deg); background: #f8bbd0; }
 
 footer {
