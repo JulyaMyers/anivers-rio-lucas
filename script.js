@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSim) {
         btnSim.addEventListener('click', () => {
             lancarFesta(); 
-            alert('Boaaaaa hihihih Eu te amo pra sempre e do tamanho do céuuu ♥ \n\nE como você recompensa, o RE9 JÁ É SEU! Garante aí na pré-venda safado ui 🔥');
+            alert('Boaaaaa hihihih Eu te amo pra sempre e do tamanho do céuuu ♥ \n\nE como você recompensa, o RE9 JÁ É SEU!');
             setTimeout(() => {
                 window.location.href = "https://www.nuuvem.com/br-pt/item/resident-evil-requiem"; 
             }, 2500); 
@@ -179,17 +179,25 @@ document.addEventListener('DOMContentLoaded', () => {
     criarCoracoes();
 });
 
-function criarCoracoes() {
-    const overlay = document.getElementById('countdown-overlay');
-    if (!overlay) return;
-    for (let i = 0; i < 30; i++) {
+function criarCoracoes(containerId) {
+    const container = document.getElementById(containerId) || document.body;
+    
+    for (let i = 0; i < 20; i++) { // 20 corações por página para não travar o celular
         const coracao = document.createElement('span');
         coracao.innerHTML = '♥';
         coracao.className = 'heart-particle';
+        
         coracao.style.left = Math.random() * 100 + '%';
-        coracao.style.fontSize = (Math.random() * 20 + 20) + 'px';
-        coracao.style.animationDelay = Math.random() * 10 + 's';
-        coracao.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        overlay.appendChild(coracao);
+        coracao.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        coracao.style.animationDelay = Math.random() * 5 + 's';
+        coracao.style.animationDuration = (Math.random() * 5 + 10) + 's';
+
+        container.appendChild(coracao);
     }
 }
+
+// Chama para a tela de contagem
+criarCoracoes('countdown-overlay');
+
+// Chama para a página principal (o body)
+criarCoracoes();

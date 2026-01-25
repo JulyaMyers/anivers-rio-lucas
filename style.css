@@ -267,10 +267,10 @@ p {
 .heart-particle {
     position: fixed;
     bottom: -10%;
-    color: #ff4081;
+    color: #8940ff; 
     user-select: none;
     pointer-events: none;
-    z-index: 10001; /* Mantém no 10001 */
+    z-index: 1;
     animation: floatUp linear infinite;
 }
 
