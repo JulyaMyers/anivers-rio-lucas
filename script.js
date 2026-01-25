@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lancarFesta(); 
             alert('Boaaaaa hihihih Eu te amo pra sempre e do tamanho do céuuu ♥ \n\nE como você recompensa, o RE9 JÁ É SEU!');
             setTimeout(() => {
-                window.location.href = "https://www.nuuvem.com/br-pt/item/resident-evil-requiem"; 
+                window.location.href = "https://secure.nuuvem.com/gt-en/account/library"; 
             }, 2500); 
         });
     }
